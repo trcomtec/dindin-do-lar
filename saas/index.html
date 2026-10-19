@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="DinDin do Lar — o painel financeiro da sua família: controle entradas, despesas, cartões, dívidas e metas em um só lugar. 7 dias grátis." />
+<title>DinDin do Lar — O painel financeiro da sua família</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1047172495034924');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1047172495034924&ev=PageView&noscript=1" /></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+:root{
+  --bg:#0a0f1e; --bg2:#0d1428; --surface:#121a33; --surface2:#16203c;
+  --line:rgba(255,255,255,.09);
+  --ink:#f2f5ff; --ink-soft:#a7b1d4; --ink-faint:#6b7699;
+  --green:#22c55e; --green-deep:#16a34a; --green-glow:rgba(34,197,94,.22);
+  --gold:#e8b64c; --gold-soft:#f7e8c4;
+  --radius:18px; --shadow:0 24px 60px -20px rgba(0,0,0,.6);
+  --font-d:'Sora',system-ui,sans-serif; --font-b:'Manrope',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-d);line-height:1.18;letter-spacing:-.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green);background:var(--green-glow);border:1px solid rgba(34,197,94,.35);padding:8px 16px;border-radius:999px;margin-bottom:20px}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,15,30,.78);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-weight:800;font-size:19px;text-decoration:none;color:var(--ink)}
+.brand .coin{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--green-deep));display:grid;place-items:center;font-size:20px;box-shadow:0 8px 20px -6px var(--green-glow)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-weight:600;font-size:15px;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-d);font-weight:700;text-decoration:none;border-radius:14px;transition:transform .15s,box-shadow .2s;cursor:pointer;border:0}
+.btn-primary{background:linear-gradient(135deg,var(--green),var(--green-deep));color:#04120a;padding:14px 28px;font-size:16px;box-shadow:0 14px 30px -10px var(--green-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -10px var(--green-glow)}
+.btn-ghost{color:var(--ink);border:1px solid var(--line);padding:12px 22px;font-size:15px;background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25)}
+.btn-sm{padding:10px 20px;font-size:14px}
+/* hero */
+.hero{padding:150px 0 90px;position:relative;background:radial-gradient(900px 480px at 50% -80px,rgba(34,197,94,.14),transparent 70%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;margin-bottom:22px}
+.hero h1 .hl{color:var(--green)}
+.hero p.lead{font-size:19px;color:var(--ink-soft);margin-bottom:32px;max-width:520px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.hero-note{font-size:14px;color:var(--ink-faint);display:flex;align-items:center;gap:8px}
+/* mockup */
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.mock-bar{display:flex;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:center}
+.dot{width:11px;height:11px;border-radius:50%}
+.mock-body{padding:22px}
+.mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi small{display:block;color:var(--ink-faint);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.kpi b{font-family:var(--font-d);font-size:18px}
+.kpi .up{color:var(--green)} .kpi .warn{color:var(--gold)}
+.mock-bars{display:flex;align-items:flex-end;gap:10px;height:110px;padding:6px 4px 0}
+.bar{flex:1;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,var(--green),rgba(34,197,94,.25))}
+.bar.alt{background:linear-gradient(180deg,#3b4a7a,rgba(59,74,122,.25))}
+.mock-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint)}
+.pill{background:var(--green-glow);color:var(--green);font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid rgba(34,197,94,.35)}
+/* pains */
+.sec-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px}
+.sec-head p{color:var(--ink-soft);font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:rgba(34,197,94,.4)}
+.card .ico{font-size:34px;margin-bottom:16px;display:block}
+.card h3{font-size:18px;margin-bottom:10px}
+.card p{color:var(--ink-soft);font-size:15px}
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:linear-gradient(180deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+.feat .ico{width:48px;height:48px;border-radius:14px;background:var(--green-glow);border:1px solid rgba(34,197,94,.3);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+.feat h3{font-size:18px;margin-bottom:10px}
+.feat p{color:var(--ink-soft);font-size:15px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-22px;left:28px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-deep));color:#04120a;font-family:var(--font-d);font-weight:800;display:grid;place-items:center;font-size:20px;box-shadow:0 10px 24px -8px var(--green-glow)}
+.step h3{margin:8px 0 10px;font-size:19px}
+.step p{color:var(--ink-soft);font-size:15px}
+/* pricing */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:860px;margin:0 auto}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:40px 36px;position:relative;display:flex;flex-direction:column}
+.plan.featured{border:2px solid var(--green);box-shadow:0 24px 60px -18px var(--green-glow);background:linear-gradient(180deg,#10233a,var(--surface))}
+.plan .tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--green),var(--green-deep));color:#04120a;font-weight:800;font-size:13px;padding:7px 18px;border-radius:999px;white-space:nowrap}
+.plan h3{font-size:22px;margin-bottom:6px}
+.plan .price{font-family:var(--font-d);font-size:46px;font-weight:800;margin:14px 0 4px}
+.plan .price small{font-size:17px;color:var(--ink-soft);font-weight:600}
+.plan .trial{color:var(--green);font-weight:800;margin-bottom:20px}
+.plan ul{list-style:none;margin-bottom:30px;flex:1}
+.plan li{padding:9px 0;color:var(--ink-soft);font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.plan li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0}
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:0;color:var(--ink);font-family:var(--font-d);font-weight:700;font-size:16px;text-align:left;padding:20px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q span{transition:transform .25s}
+.faq-item.open .faq-q span{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--ink-soft);font-size:15px}
+.faq-a div{padding:0 22px 22px}
+/* final cta */
+.final{background:radial-gradient(700px 380px at 50% 0,rgba(34,197,94,.16),transparent 70%),var(--bg2);border-top:1px solid var(--line);text-align:center}
+.final h2{font-size:clamp(28px,3.8vw,42px);margin-bottom:16px}
+.final p{color:var(--ink-soft);font-size:18px;margin-bottom:32px}
+/* footer */
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--ink-faint);font-size:14px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+/* whatsapp float */
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(37,211,102,.5);text-decoration:none;font-size:30px;transition:transform .2s}
+.wa:hover{transform:scale(1.08)}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .pricing{grid-template-columns:1fr}
+  .nav-links a:not(.btn){display:none}
+  section{padding:64px 0}
+}
+@media(max-width:560px){.cards,.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><span class="coin">💰</span> DinDin do Lar</a>
+    <nav class="nav-links">
+      <a href="#dores">Dores</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="https://dindindolar.com.br/auth" class="btn btn-ghost btn-sm">Entrar</a>
+      <a href="https://dindindolar.com.br/planos" class="btn btn-primary btn-sm" onclick="fbq('track','InitiateCheckout')">Teste 7 dias grátis</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">💰 Painel financeiro familiar</span>
+      <h1>Sua família ganha bem, mas o dinheiro <span class="hl">some no fim do mês?</span></h1>
+      <p class="lead">O DinDin do Lar organiza entradas, despesas, cartões, dívidas e metas em um painel simples — e te mostra todo dia quanto você pode gastar sem estourar.</p>
+      <div class="hero-ctas">
+        <a href="https://dindindolar.com.br/planos" class="btn btn-primary" onclick="fbq('track','InitiateCheckout')">Começar teste grátis →</a>
+        <a href="#recursos" class="btn btn-ghost">Ver como funciona</a>
+      </div>
+      <p class="hero-note">✓ 7 dias grátis &nbsp;✓ Sem cartão no teste &nbsp;✓ Cancele quando quiser</p>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span class="dot" style="background:#f87171"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#34d399"></span></div>
+      <div class="mock-body">
+        <div class="mock-kpis">
+          <div class="kpi"><small>Meta diária</small><b class="up">R$ 86,40</b></div>
+          <div class="kpi"><small>Despesas mês</small><b>R$ 4.210</b></div>
+          <div class="kpi"><small>Fatura cartão</small><b class="warn">R$ 1.890</b></div>
+        </div>
+        <div class="mock-bars">
+          <div class="bar" style="height:45%"></div><div class="bar alt" style="height:70%"></div><div class="bar" style="height:55%"></div><div class="bar alt" style="height:85%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:92%"></div><div class="bar alt" style="height:50%"></div>
+        </div>
+        <div class="mock-foot"><span>Fluxo de caixa · outubro</span><span class="pill">+12% vs mês passado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dores">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">😰 Parece familiar?</span>
+      <h2>A desorganização financeira tem um custo — e não é só dinheiro</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="ico">🧾</span><h3>Contas espalhadas</h3><p>Boletos no email, Pix no extrato, anotações no caderno. Ninguém sabe ao certo quanto a família gasta por mês.</p></div>
+      <div class="card"><span class="ico">💳</span><h3>Fatura surpresa</h3><p>O cartão fecha e vem o susto. Parcelas esquecidas viram juros — e o rombo do mês seguinte.</p></div>
+      <div class="card"><span class="ico">🏖️</span><h3>Zero reserva</h3><p>Qualquer imprevisto vira dívida: carro quebrou, geladeira pifou, e lá se vai o cheque especial.</p></div>
+      <div class="card"><span class="ico">💬</span><h3>Briga por dinheiro</h3><p>Sem um número claro, cada gasto vira discussão. O problema raramente é quanto entra — é não saber pra onde vai.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="recursos" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">⚙️ Tudo em um só lugar</span>
+      <h2>Um painel completo pra família inteira</h2>
+      <p>Chega de planilha travada e app de anotação. O DinDin do Lar foi feito pra quem quer ver a vida financeira com clareza.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ico">🎯</div><h3>Meta diária automática</h3><p>O app calcula todo dia quanto você pode gastar sem comprometer as contas do mês.</p></div>
+      <div class="feat"><div class="ico">📊</div><h3>Fluxo de caixa</h3><p>Entradas e saídas projetadas no tempo — veja o futuro do seu dinheiro, não só o passado.</p></div>
+      <div class="feat"><div class="ico">💳</div><h3>Cartões e faturas</h3><p>Todos os cartões e faturas organizados, com alertas antes do vencimento.</p></div>
+      <div class="feat"><div class="ico">📌</div><h3>Contas fixas</h3><p>Aluguel, escola, financiamentos: tudo mapeado pra nada passar batido.</p></div>
+      <div class="feat"><div class="ico">🔥</div><h3>Dívidas sob controle</h3><p>Simuladores avalanche e bola de neve mostram o caminho mais rápido pra quitar tudo.</p></div>
+      <div class="feat"><div class="ico">🏆</div><h3>Metas e reserva</h3><p>Defina objetivos — viagem, reforma, emergência — e acompanhe o progresso.</p></div>
+      <div class="feat"><div class="ico">🏠</div><h3>Patrimônio familiar</h3><p>Bens, investimentos e evolução do patrimônio em um só painel.</p></div>
+      <div class="feat"><div class="ico">📈</div><h3>Relatórios</h3><p>Relatórios visuais por categoria, período e conta. Entenda pra onde o dinheiro vai.</p></div>
+      <div class="feat"><div class="ico">👨‍👩‍👦</div><h3>Feito pra família</h3><p>Acesso compartilhado: todo mundo da casa enxerga e colabora no mesmo painel.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🚀 Simples de começar</span>
+      <h2>Em minutos, sua vida financeira organizada</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Crie sua conta</h3><p>Cadastro em 1 minuto. Você ganha <b>7 dias grátis</b>, sem informar cartão.</p></div>
+      <div class="step"><h3>Registre suas finanças</h3><p>Lance entradas, despesas, contas fixas e cartões. O painel monta tudo sozinho.</p></div>
+      <div class="step"><h3>Siga a meta diária</h3><p>Abra o app todo dia e veja quanto pode gastar. Decisão sem culpa, sem planilha.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💎 Planos</span>
+      <h2>Menos que um lanche por mês</h2>
+      <p>Comece grátis por 7 dias. Sem cartão, sem compromisso.</p>
+    </div>
+    <div class="pricing">
+      <div class="plan featured">
+        <span class="tag">🔥 Mais escolhido</span>
+        <h3>Mensal</h3>
+        <div class="price">R$ 24,90<small>/mês</small></div>
+        <p class="trial">7 dias grátis — R$ 0 na primeira semana</p>
+        <ul>
+          <li>Painel financeiro familiar completo</li>
+          <li>Meta diária automática</li>
+          <li>Cartões, faturas e dívidas</li>
+          <li>Metas, patrimônio e relatórios</li>
+          <li>Cancele quando quiser</li>
+        </ul>
+        <a href="https://dindindolar.com.br/planos" class="btn btn-primary" style="width:100%" onclick="fbq('track','InitiateCheckout')">Começar teste grátis</a>
+      </div>
+      <div class="plan">
+        <h3>Anual</h3>
+        <div class="price">R$ 249<small>/ano</small></div>
+        <p class="trial" style="color:var(--gold)">2 meses grátis no plano anual</p>
+        <ul>
+          <li>Tudo do plano mensal</li>
+          <li>12 meses pelo preço de 10</li>
+          <li>Prioridade no suporte</li>
+          <li>Cancele quando quiser</li>
+        </ul>
+        <a href="https://dindindolar.com.br/planos" class="btn btn-ghost" style="width:100%" onclick="fbq('track','InitiateCheckout')">Assinar o anual</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">❓ Dúvidas frequentes</span>
+      <h2>Perguntas & respostas</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Preciso instalar algum programa? <span>＋</span></button><div class="faq-a"><div>Não. O DinDin do Lar roda 100% no navegador — funciona no celular, tablet e computador, sem instalar nada.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Meus dados financeiros estão seguros? <span>＋</span></button><div class="faq-a"><div>Sim. Conexão criptografada (HTTPS), infraestrutura com certificações de segurança e seus dados nunca são vendidos ou compartilhados.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Como funciona o teste grátis? <span>＋</span></button><div class="faq-a"><div>Você usa tudo por 7 dias sem informar cartão. Se não quiser continuar, simplesmente não assina — nada é cobrado.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Posso cancelar quando quiser? <span>＋</span></button><div class="faq-a"><div>Sim. O cancelamento é feito em 1 clique no portal do cliente, sem multa e sem letra miúda. Você mantém o acesso até o fim do período pago.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Já uso planilha. Por que mudar? <span>＋</span></button><div class="faq-a"><div>Planilha exige disciplina manual e não te avisa de nada. O DinDin do Lar calcula sua meta diária sozinho, alerta sobre faturas e mostra o futuro do seu dinheiro — sem fórmulas.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Como é feita a cobrança? <span>＋</span></button><div class="faq-a"><div>Via cartão de crédito, processada com segurança pelo Stripe — a mesma plataforma usada por milhões de empresas no mundo.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Daqui a 7 dias, você pode estar no controle — <span style="color:var(--green)">ou no mesmo lugar.</span></h2>
+    <p>O teste é grátis. O risco é zero. A clareza financeira, essa não tem preço.</p>
+    <a href="https://dindindolar.com.br/planos" class="btn btn-primary" style="font-size:18px;padding:18px 44px" onclick="fbq('track','InitiateCheckout')">Quero meus 7 dias grátis →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#" style="font-size:16px"><span class="coin" style="width:30px;height:30px;font-size:16px">💰</span> DinDin do Lar</a>
+    <span>© 2026 DinDin do Lar · Feito com 💚 em Cuiabá</span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5565999590025?text=Quero%20conhecer%20o%20DinDin%20do%20Lar!" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item'), ans=item.querySelector('.faq-a'), open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}
+  });
+});
+</script>
+</body>
+</html>
